@@ -6,7 +6,7 @@ const MULTIPLE = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", dur
 const WEEKDAY = ["SUN",  "MON", "TUES", "WED", "THU", "FRI", "SAT"];
 
 const jingle = new Audio("assets/music/jingle.wav")
-const crawlSpeed = 150;
+const crawlSpeed = 15;
 
 var isDay = true;
 var currentLogo;
@@ -84,7 +84,7 @@ function setInformation(){
   setForecast();
   setOutlook();
   createLogoElements();
-  setCurrentConditions();
+  setCurrentConditions(4);
   setTimelineEvents();
   hideSettings();
   setTimeout(startAnimation, 1000);
@@ -354,10 +354,10 @@ function loadInfoBar(){
 }
 
 function setClockTime(){
-  var currentTime = new Date();
+  var currentTime = new Date(12/24/2022);
   var diem = "AM";
-  var h = currentTime.getHours();
-  var m = currentTime.getMinutes();
+  var h = currentTime.getHours(1);
+  var m = currentTime.getMinutes(1);
 
   if(h == 0){
     h = 12;
@@ -387,7 +387,7 @@ function animateValue(id, start, end, duration, pad) {
   }
   var range = end - start;
   var current = start;
-  var increment = end > start? 1 : -1;
+  var increment = end > start? 7 : -7;
   var stepTime = Math.abs(Math.floor(duration / range));
   var timer = setInterval(function() {
       current += increment;
@@ -408,7 +408,7 @@ function animateDialFill(id, temperature, duration) {
   }
   var range = end - start;
   var current = start;
-  var increment = end > start? 1 : -1;
+  var increment = end > start? 9 : -9;
   var stepTime = Math.abs(Math.floor(duration / range));
   var timer = setInterval(function() {
       current += increment;
