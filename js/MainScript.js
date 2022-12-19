@@ -84,7 +84,7 @@ function setInformation(){
   setForecast();
   setOutlook();
   createLogoElements();
-  setCurrentConditions();
+  setCurrentConditions(172);
   setTimelineEvents();
   hideSettings();
   setTimeout(startAnimation, 1000);
