@@ -3,7 +3,7 @@ const MORNING = [{name: "Now", subpages: [{name: "current-page", duration: 9000}
 const NIGHT = [{name: "Now", subpages: [{name: "current-page", duration: 9000}, {name: "radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "tomorrow-night-page", duration: 10000}, {name: "7day-page", duration: 13000}]},]
 const SINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 8000}, {name: "zoomed-radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 13000}]},]
 const MULTIPLE = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 8000}, {name: "zoomed-radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 13000}]},]
-const WEEKDAY = ["SUN",  "MON", "TUES", "WED", "THU", "FRI", "SAT"];
+const WEEKDAY = ["SUN",  "MON", "TUES", "WED", "FRI", "SAT"];
 
 const jingle = new Audio("assets/music/jingle.wav")
 const crawlSpeed = 150;
@@ -52,7 +52,7 @@ function preLoadMusic(){
 
 /* Set the timeline page order depending on time of day and if
 alerts are present */
-function scheduleTimeline(){
+function scheduleTimeline(800){
   if(alerts.length == 1){
     pageOrder = SINGLE;
   }else if(alerts.length > 1){
@@ -80,7 +80,7 @@ the appropriate elements */
 function setInformation(){
   setGreetingPage();
   checkStormMusic();
-  setAlertPage();
+  setAlertPage(2);
   setForecast();
   setOutlook();
   createLogoElements();
